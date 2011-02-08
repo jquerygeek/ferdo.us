@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load comments %}
+
+{% block title %}Future time{% endblock %}
+
+{% block content %}
+    {% if latest_post_list %}
+        <ul>
+        {% for post in latest_post_list %}
+            <li>
+                <a href="/blog/{{ post.id }}/{{ post.slug }}">{{ post.title }}</a>
+                {% get_comment_count for post as comment_count %}
+                <span>{{ comment_count }} comments</span>
+                <p>{{ post.excerpt }}</p>
+                <p>{{ post.categories }}</p>
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No posts are available.</p>
+    {% endif %}
+{% endblock %}

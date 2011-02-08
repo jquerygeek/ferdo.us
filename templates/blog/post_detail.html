@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load comments %}
+
+{% block title %}Future time{% endblock %}
+{% block header %}this is header{% endblock %}
+
+{% block content %}
+    
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<h1>{{ post.title }}</h1>
+<span>
+    {% get_comment_count for post as comment_count %}
+    comments {{ comment_count }}
+</span>
+<p>{{ post.body }}</p>
+{% render_comment_list for post %}
+{% render_comment_form for post %}
+{% endblock %}
