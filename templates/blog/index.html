@@ -1,22 +1,44 @@
 {% extends "base.html" %}
 {% load comments %}
 
-{% block title %}Future time{% endblock %}
+{% block title %}Blog{% endblock %}
 
 {% block content %}
-    {% if latest_post_list %}
-        <ul>
-        {% for post in latest_post_list %}
-            <li>
-                <a href="/blog/{{ post.id }}/{{ post.slug }}">{{ post.title }}</a>
-                {% get_comment_count for post as comment_count %}
-                <span>{{ comment_count }} comments</span>
-                <p>{{ post.excerpt }}</p>
-                <p>{{ post.categories }}</p>
-            </li>
-        {% endfor %}
-        </ul>
-    {% else %}
-        <p>No posts are available.</p>
-    {% endif %}
+    <ol id="posts-list" class="hfeed">
+        {% if latest_post_list %}
+            {% for post in latest_post_list %}
+                <li>
+                <article class="hentry">
+                    <header>
+                        <h2 class="entry-title">
+                            <a rel="bookmark" href="/blog/{{ post.id }}/{{ post.slug }}">{{ post.title }}</a>
+                        </h2>
+                    </header>
+
+                    <footer class="post-meta">
+                        <abbr class="published" title="2005-10-10T14:07:00-07:00"><!-- YYYYMMDDThh:mm:ss+ZZZZ -->
+                            Posted under: {{ post.category }}
+                        </abbr>
+
+                        <address class="vcard author">
+                            By <a class="url fn" href="#">{{ post.author }}</a> on
+                            {{ post.pub_date|date:"M jS, Y" }}
+                            <p>views: 1</p>
+                        </address>
+                    </footer>
+                    <!-- /.post-info -->
+
+                    <div class="entry-content">
+                        <p>{{ post.excerpt }}... <a href="/blog/{{ post.id }}/{{ post.slug }}">read more...</a></p>
+                    </div>
+                    <!-- /.entry-content -->
+                </article>
+                </li>
+            {% endfor %}
+        {% else %}
+            <li>No posts are available.</li>
+        {% endif %}
+    </ol>
+    <!-- /#posts-list -->
+<!-- /#content -->
 {% endblock %}

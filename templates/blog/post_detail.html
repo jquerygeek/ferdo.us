@@ -1,19 +1,20 @@
 {% extends "base.html" %}
 {% load comments %}
 
-{% block title %}Future time{% endblock %}
-{% block header %}this is header{% endblock %}
+{% block title %}{{ post.title }}{% endblock %}
 
 {% block content %}
-    
-{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
-<h1>{{ post.title }}</h1>
-<span>
-    {% get_comment_count for post as comment_count %}
-    comments {{ comment_count }}
-</span>
+<h2>{{ post.title }}</h2>
+<div class="post-info">
+<p class="post-meta">Posted  by <a href="" title="">admin</a>
+    on Sep 5, 2008 in
+    <a href="" title="View all posts in Blog">Blog</a>
+    | comments: <a href="" title="">{% get_comment_count for post as comment_count %}{{ comment_count }} comments</a>
+</p>
+</div>    
 <p>{{ post.body }}</p>
+    
 {% render_comment_list for post %}
 {% render_comment_form for post %}
 {% endblock %}

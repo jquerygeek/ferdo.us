@@ -17,7 +17,7 @@ fieldset {
 	-webkit-border-radius: 5px;
 }
 legend {font-size: 1.25em; margin-bottom: 0 !important; margin-bottom: 1.429em; padding: 0 .5em;}
-label {font-size: 1.1em; height: 25px; line-height: 25px;}
+label {font-size: 1.1em; height: 25px; line-height: 25px;display:block;font-weight:bold;}
 
 	/* Input Types */
 	input[type='text'],
@@ -30,6 +30,7 @@ label {font-size: 1.1em; height: 25px; line-height: 25px;}
 		font-family: inherit;
 		font-size: inherit;
 		padding: 2px;
+        min-width:200px;
 	}
 	input[type='text']:hover,
 	input[type='email']:hover,
@@ -54,7 +55,7 @@ label {font-size: 1.1em; height: 25px; line-height: 25px;}
 	}
 	
 	input[type='submit'] {
-		background: #C74350;
+		background: #4183C4;
 		border: 0;
 		border-radius: 5px;
 		color: #fff;
@@ -62,8 +63,9 @@ label {font-size: 1.1em; height: 25px; line-height: 25px;}
 		font-family: inherit;
 		font-size: inherit;
 		padding: .3em 2em;
-		text-shadow: 1px 1px 1px #000;
+        text-shadow:1px 1px 1px rgba(0,0,0,0.4);
 	}
+    input[type='submit']:hover { color: #f6f6f6; background-color:gray;}
 	
 	input:required, textarea:required {outline: 1px solid #C74350;}
 	
